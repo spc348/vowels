@@ -1,0 +1,71 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEditor;
+
+public class ClickDrag : MonoBehaviour
+{
+
+	Vector2 mousePosition;
+	Vector3 originalPosition;
+	GameObject parent;
+
+	// Use this for initialization
+	void Start ()
+	{
+		originalPosition = transform.position;
+		parent = transform.parent.gameObject;
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+		mousePosition.x = Input.mousePosition.x;
+		mousePosition.y = Input.mousePosition.y;
+	}
+    
+	// sprite is clicked
+	public void OnMouseDown ()
+	{
+		transform.parent = null;
+		EyeMovement.Eyes.Look (transform);
+	}
+
+	// sprite is dragged
+	public void OnMouseDrag ()
+	{
+		EyeMovement.Eyes.Look (transform);
+		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (mousePosition.x, mousePosition.y, 10.0f));
+	}
+
+	// sprite is over
+	public void OnMouseOver ()
+	{
+		//StartCoroutine (LerpScaleUp (1f));
+	}
+
+	//sprite is released
+	public void OnMouseUp ()
+	{
+		if (OwlScript.IsVowel)
+			return;
+		transform.parent = parent.transform;
+		transform.position = originalPosition;
+		EyeMovement.Eyes.LookAway ();
+	}
+
+	IEnumerator LerpScaleUp (float time)
+	{
+		Vector3 originalScale = transform.localScale;
+		Vector3 targetScale = transform.localScale += new Vector3 (.1f, .1f, 0);
+		var originalTime = time;
+
+		while (time>0f) {
+			time -= Time.deltaTime;
+
+			transform.localScale = Vector3.Lerp (targetScale, originalScale, time / originalTime);
+			yield return new WaitForSeconds (0);
+		}
+	}
+
+
+}

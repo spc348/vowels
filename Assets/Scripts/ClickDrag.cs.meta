@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fcc7881fd6828e740978627f5805967c
+timeCreated: 1432829850
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - lEye: {instanceID: 0}
+  - rEye: {instanceID: 0}
+  - l: {instanceID: 0}
+  - r: {instanceID: 0}
+  - source: {instanceID: 0}
+  - click: {fileID: 8300000, guid: 65bca9642c4f4b94fa9aae4accf0c307, type: 3}
+  - beep: {fileID: 8300000, guid: aba97293646f11545af798dbf5a35ebe, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

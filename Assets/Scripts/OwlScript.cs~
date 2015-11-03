@@ -1,0 +1,40 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class OwlScript : MonoBehaviour
+{
+    
+	public static OwlScript Owl;
+	public static bool IsVowel;
+
+	void Awake ()
+	{
+		Owl = this;
+		IsVowel = false;
+	}
+        
+	void Start ()
+	{
+
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+	
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if (other.CompareTag ("vowel")) {
+			IsVowel = true;
+			other.transform.parent = this.transform;
+			other.transform.position = new Vector3 (0f, 0f, 0f);
+		}
+	}
+
+	void OnTriggerExit2D (Collider2D other)
+	{
+		IsVowel = false;
+	}
+}

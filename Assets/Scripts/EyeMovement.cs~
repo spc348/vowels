@@ -1,0 +1,39 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class EyeMovement : MonoBehaviour
+{
+	public static EyeMovement Eyes;
+
+	float maxDistance;
+	Vector3 originalPosition;
+
+	void Awake ()
+	{
+		Eyes = this;
+	}
+
+	// Use this for initialization
+	void Start ()
+	{
+		originalPosition = transform.position;
+		maxDistance = .2f;
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+	}
+
+	public void Look (Transform target)
+	{
+		Vector3 distanceToTarget = target.position - transform.position;
+		distanceToTarget = Vector3.ClampMagnitude (distanceToTarget, maxDistance);
+		transform.position += distanceToTarget;
+	}
+
+	public void LookAway ()
+	{
+		transform.position = originalPosition;
+	}
+}

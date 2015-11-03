@@ -1,0 +1,27 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class WingMovement : MonoBehaviour
+{
+	public static WingMovement Wings;
+
+	void Awake ()
+	{
+		Wings = this;
+	}
+	// Use this for initialization
+	void Start ()
+	{
+	
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+	
+	}
+
+	public void WingDance ()
+	{
+	}
+}
